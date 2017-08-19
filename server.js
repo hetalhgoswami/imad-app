@@ -22,13 +22,13 @@ var articleOne= {
 };
 function createTamplate(Data)
 {
-    var title=Data.title;
-    var date=Data.date;
-    var headding=Data.headding;
-    var content=Data.content;
-var htmltamplate=
-`<html>
-    <head>
+    var title = Data.title;
+    var date = Data.date;
+    var headding = Data.headding;
+    var content = Data.content;
+    var htmltamplate=
+   `<html>
+     <head>
         <title>
             ${title}
         </title>
@@ -53,7 +53,7 @@ var htmltamplate=
         </div>
     </body>
 </html>`;
-return htmlTemplate;
+return createTemplate;
 }
 
 
