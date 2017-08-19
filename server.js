@@ -5,83 +5,100 @@ var path = require('path');
 var app = express();
 app.use(morgan('combined'));
 
-var articles = { 
-var articleone : {
-title: 'Article One',
-heading: 'Article One',
-date: 'Aug 18 2017',
-content: `<p>This is the paragraph tag.</p>
-<p>This is Another paragraph tag.</p>
-<p>This is One more paragraph tag.</p>`
-},
-var articletwo : {
-title: 'Article Two',
-heading: 'Article Two',
-date: 'Aug 20 2017',
-content: `<p>This is the paragraph tag.</p>
-<p>This is Another paragraph tag.</p>
-<p>This is One more paragraph tag.</p>`;
-},
-var articlethree : {
-title: 'Article Three',
-heading: 'Article Three',
-date: 'Aug 22 2017',
-content: `<p>This is the paragraph tag.</p>
-<p>This is Another paragraph tag.</p>
-<p>This is One more paragraph tag.</p>`;
-}
+
+var articles = {
+    'article-one':  {
+      title: 'Article one .. Im Varun',  
+      heading: 'Article One',
+      date: 'August 5,2017',
+      content: `
+                <p>
+                         This is the conent for my first article.This is the conent for my first article.This is the conent for my first article.This is the conent for my first article.This is the conent for my first article.This is the conent for my first article.      
+                </p>
+                <p>
+                         This is the conent for my first article.This is the conent for my first article.This is the conent for my first article.This is the conent for my first article.This is the conent for my first article.This is the conent for my first article.      
+                </p>
+                <p>
+                         This is the conent for my first article.This is the conent for my first article.This is the conent for my first article.This is the conent for my first article.This is the conent for my first article.This is the conent for my first article.      
+                </p>` 
+    },
+    'article-two': {
+      title: 'Article Two .. Im Varun',  
+      heading: 'Article Two',
+      date: 'August 10,2017',
+      content: `
+                <p>
+                         This is the conent for my second article.      
+                </p>`
+                
+    },
+    'article-three': {
+      title: 'Article Three .. Im Varun',  
+      heading: 'Article Three',
+      date: 'August 23,2017',
+      content: `
+                <p>
+                         This is the conent for my third article.      
+                </p>`
+                
+    }
 };
 
-function createtemplate (data){
+function createTemplate (data) {
+    var title = data.title;
+    var date = data.date;
+    var heading = data.heading;
+    var content = data.content;
+    var htmlTemplate = `
+    <html>
+        <head>
+            <title>
+                ${title} 
+            </title>
+            <meta name="viewport" content="width=device-width, initial-scale=1" />
+            <link href="/ui/style.css" rel="stylesheet" />
+        </head>
+        <body>
+            <div class="container">
+            <div>
+                <a href="/">Home</a>
+            </div>
+            <hr/>
+            <h3>
+                ${heading}
+            </h3>
+            <div>
+                ${date}
+            </div>
+                <div>
+                   ${content}
+                </div>
+            </div>
+        </body>
+    </html>
+    `;
+    return htmlTemplate;
+}   
 
-var title = data.title;
-var heading = data.heading;
-var date = data.date;
-var content = data.content;
-
-var htmltemplate =`
-<html>
-<head>
-    <title>${title}</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link href="/ui/style.css" rel="stylesheet" />
-</head>
-<body>
-    <div class="container">
-    <div> 
-        <a href="/">Home</a>
-    </div>
-    
-    <hr/>
-    
-    <h3>Article One</h3>
-    
-    <div>${date}</div>
-    
-    <div>
-        ${content}
-    </div>
-    </div>
-</body>
-
-`;
-return htmltemplate;
-};
 app.get('/', function (req, res) {
-res.sendFile(path.join(__dirname, 'ui', 'index.html'));
+  res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
+
+app.get('/:articleName', function (req, res){
+    var articleName = req.params.arictleName;
+   res.send(createTemplate(articles[articleName]));
+   });
+
+
 app.get('/ui/style.css', function (req, res) {
-res.sendFile(path.join(__dirname, 'ui', 'style.css'));
+    res.sendFile(path.join(__dirname, 'ui', 'style.css'));
+});
+
+app.get('/ui/main.js', function (req, res) {
+    res.sendFile(path.join(__dirname, 'ui', 'main.js'));
 });
 app.get('/ui/madi.png', function (req, res) {
-res.sendFile(path.join(__dirname, 'ui', 'madi.png'));
-});
-
-app.get('/:articleName',function(req, res){
-// articleName = article-one 
-// articles[articleName] == { content of the object of articles
-var articleName = req.params.articleName;
-res.send(createtemplate(articles[articleName]));
+  res.sendFile(path.join(__dirname, 'ui', 'madi.png'));
 });
 
 // Do not change port, otherwise your app won't run on IMAD servers
