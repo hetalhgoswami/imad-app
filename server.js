@@ -22,10 +22,10 @@ var article_one= {
 };
 function createTamplate(Data)
 {
-    var title=data.title;
-    var date=data.date;
-    var headding=data.headding;
-    var content=data.content;
+    var title=Data.title;
+    var date=Data.date;
+    var headding=Data.headding;
+    var content=Data.content;
 var htmltamplate=
 `<html>
     <head>
