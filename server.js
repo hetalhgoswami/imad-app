@@ -27,7 +27,7 @@ function createTamplate(Data)
     var headding=data.headding;
     var content=data.content;
 var htmltamplate=
-`<!Doctype html>
+`<html>
     <head>
         <title>
             ${title}
