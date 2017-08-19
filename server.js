@@ -38,12 +38,12 @@ var articles = {
             </p>`
 }
 };
-function createTamplate(Data)
+function createTamplate(data)
 {
-    var title = Data.title;
-    var date = Data.date;
-    var headding = Data.headding;
-    var content = Data.content;
+    var title = data.title;
+    var date = data.date;
+    var headding = data.headding;
+    var content = data.content;
     var htmltamplate=
    `<html>
      <head>
