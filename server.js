@@ -5,39 +5,45 @@ var path = require('path');
 var app = express();
 app.use(morgan('combined'));
 
+
 var articles = {
- 'articleOne': {
-    title: "Article one|hetal goswami",
-    headding: 'Article-one',
-    date: 'sep 5 2017',
-    content: `p>
-                This is my first html code. This is my first html code. This is my first html code. This is my first html code. This is my first html code. This is my first html code. This is my first html code. This is my first html code. This is my first html code. This is my first html code. This is my first html code.
-            </p>
-            <p>
-                This is my first html code. This is my first html code. This is my first html code. This is my first html code. This is my first html code. This is my first html code. This is my first html code. This is my first html code. This is my first html code. This is my first html code. This is my first html code.
-            </p>
-            <p>
-                This is my first html code. This is my first html code. This is my first html code. This is my first html code. This is my first html code. This is my first html code. This is my first html code. This is my first html code. This is my first html code. This is my first html code. This is my first html code.
-            </p>`
-        
-},
-'articleTwo': {
-    title: "Article Two|hetal goswami",
-    headding: 'Article-Two',
-    date: 'sep 10 2017',
-    content: `p>
-                This is my second html code..
-            </p>`
-},
-'articleThree': {
-    title: "Article Two|hetal goswami",
-    headding: 'Article-Two',
-    date: 'sep 10 2017',
-    content: `p>
-                This is my third html code..
-            </p>`
-}
+    'article-one':  {
+      title: 'Article one .. Im Varun',  
+      heading: 'Article One',
+      date: 'August 5,2017',
+      content: `
+                <p>
+                         This is the conent for my first article.This is the conent for my first article.This is the conent for my first article.This is the conent for my first article.This is the conent for my first article.This is the conent for my first article.      
+                </p>
+                <p>
+                         This is the conent for my first article.This is the conent for my first article.This is the conent for my first article.This is the conent for my first article.This is the conent for my first article.This is the conent for my first article.      
+                </p>
+                <p>
+                         This is the conent for my first article.This is the conent for my first article.This is the conent for my first article.This is the conent for my first article.This is the conent for my first article.This is the conent for my first article.      
+                </p>` 
+    },
+    'article-two': {
+      title: 'Article Two .. Im Varun',  
+      heading: 'Article Two',
+      date: 'August 10,2017',
+      content: `
+                <p>
+                         This is the conent for my second article.      
+                </p>`
+                
+    },
+    'article-three': {
+      title: 'Article Three .. Im Varun',  
+      heading: 'Article Three',
+      date: 'August 23,2017',
+      content: `
+                <p>
+                         This is the conent for my third article.      
+                </p>`
+                
+    }
 };
+
 function createTemplate (data) {
     var title = data.title;
     var date = data.date;
@@ -74,15 +80,16 @@ function createTemplate (data) {
     return htmlTemplate;
 }   
 
-
-
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
+
 app.get('/:articleName', function (req, res){
     var articleName = req.params.articleName;
    res.send(createTemplate(articles[articleName]));
    });
+
+
 app.get('/ui/style.css', function (req, res) {
     res.sendFile(path.join(__dirname, 'ui', 'style.css'));
 });
