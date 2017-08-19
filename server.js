@@ -53,7 +53,7 @@ function createTamplate(Data)
         </div>
     </body>
 </html>`;
-return htmlTemplate;
+return htmltemplate;
 }
 
 
