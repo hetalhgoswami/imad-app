@@ -6,49 +6,48 @@ var app = express();
 app.use(morgan('combined'));
 
 
-var articles = {
-    'article-one':  {
-      title: 'Article one .. Im Varun',  
-      heading: 'Article One',
-      date: 'August 5,2017',
-      content: `
-                <p>
-                         This is the conent for my first article.This is the conent for my first article.This is the conent for my first article.This is the conent for my first article.This is the conent for my first article.This is the conent for my first article.      
-                </p>
-                <p>
-                         This is the conent for my first article.This is the conent for my first article.This is the conent for my first article.This is the conent for my first article.This is the conent for my first article.This is the conent for my first article.      
-                </p>
-                <p>
-                         This is the conent for my first article.This is the conent for my first article.This is the conent for my first article.This is the conent for my first article.This is the conent for my first article.This is the conent for my first article.      
-                </p>` 
+var article={
+    'article-one':{
+        title: 'Article one...i m hetal',
+        heading: 'article one',
+        date: 'Augest 5,2017',
+        content:`
+        <p>
+        This is my first html code. This is my first html code. This is my first html code. This is my first html code. This is my first html code. This is my first html code. This is my first html code. This is my first html code. This is my first html code. This is my first html code. This is my first html code.
+            </p>
+            <p>
+                This is my first html code. This is my first html code. This is my first html code. This is my first html code. This is my first html code. This is my first html code. This is my first html code. This is my first html code. This is my first html code. This is my first html code. This is my first html code.
+            </p>
+            <p>
+                This is my first html code. This is my first html code. This is my first html code. This is my first html code. This is my first html code. This is my first html code. This is my first html code. This is my first html code. This is my first html code. This is my first html code. This is my first html code.
+            </p>`
     },
-    'article-two': {
-      title: 'Article Two .. Im Varun',  
-      heading: 'Article Two',
-      date: 'August 10,2017',
-      content: `
-                <p>
-                         This is the conent for my second article.      
-                </p>`
-                
-    },
-    'article-three': {
-      title: 'Article Three .. Im Varun',  
-      heading: 'Article Three',
-      date: 'August 23,2017',
-      content: `
-                <p>
+   'article-two':{
+       title : 'Article two....i m hetal',
+       heading: 'article two',
+       date: 'Augest 6,2017',
+       content:`
+       <p>
+          This is the conent for my second article.      
+       </p>`
+   },
+   'article-three':{
+       title:'article three..i m hetal',
+       heading:'article three',
+       date:'augest 7,2017',
+       content:`
+        <p>
                          This is the conent for my third article.      
                 </p>`
-                
-    }
-};
 
-function createTemplate (data) {
-    var title = data.title;
-    var date = data.date;
-    var heading = data.heading;
-    var content = data.content;
+   }
+    
+};
+function createTemplate(data){
+    var title=data.title;
+    var date=data.date;
+    var heading=data.heading;
+    var content=data.content;
     var htmlTemplate = `
     <html>
         <head>
@@ -56,7 +55,7 @@ function createTemplate (data) {
                 ${title} 
             </title>
             <meta name="viewport" content="width=device-width, initial-scale=1" />
-            <link href="/ui/style.css" rel="stylesheet"/>
+            <link href="/ui/style.css" rel="stylesheet" />
         </head>
         <body>
             <div class="container">
@@ -76,9 +75,9 @@ function createTemplate (data) {
             </div>
         </body>
     </html>
-    `;
-    return htmlTemplate;
-}   
+`;
+return htmlTemplate;
+}
 
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
