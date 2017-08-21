@@ -23,12 +23,12 @@ body {
     height: 200px;
 }
 .container{
-    max-width: 800px;
+      max-width: 900px;
     margin: 0 auto;
-    color: #312a2a;
+    color: #d62525;
     font-family: sans-serif;
     padding-top: 50px;
-    padding-left: 100px;
+    padding-left: 300px;
 }
 
 
