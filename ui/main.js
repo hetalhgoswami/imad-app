@@ -20,4 +20,4 @@ function moveRight()
 img.onclick=function(){
     var interval=setInterval(moveRight,70);
     img.style.marginLeft='100px';
-};
+};*/
