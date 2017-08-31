@@ -3,7 +3,7 @@ var button =document.getElementById('couter');
 var couter=0;
 button.onclick=function(){
     //render the variable in coreect span
-    coutr=coutr+1;
+    couter=couter+1;
     var span=document.getElementById('couter');
     span.innerHTML=couter.toString();
 };
